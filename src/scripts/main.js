@@ -1,6 +1,6 @@
 'use strict';
 
-const inputElements = [...document.querySelectorAll('input')];
+const inputElements = [...document.querySelectorAll('form input')];
 
 inputElements.forEach((input) => {
   input.setAttribute('placeholder', formatCamelCase(input.name));
@@ -8,10 +8,10 @@ inputElements.forEach((input) => {
   const label = document.createElement('label');
 
   label.className = 'field-label';
-  label.htmlFor = input.name;
+  label.htmlFor = input.id;
   label.textContent = formatCamelCase(input.name);
 
-  input.before(label);
+  input.parentElement.append(label);
 });
 
 function formatCamelCase(str) {
